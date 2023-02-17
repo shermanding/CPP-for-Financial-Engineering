@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../book/l3_book.h
+cstdint
+-
+vector
+-
+map
+-
+unordered_map
+-
+list
+-
+iostream
+-
+util/price.h
+../book/util/price.h
+
+../util/price.h
+cstdint
+-
+cmath
+-
+limits
+-
+
+/home/shermanding/QF633/L1_workspace/assignment_4/project/src/book/l3_book.cpp
+book/l3_book.h
+/home/shermanding/QF633/L1_workspace/assignment_4/project/src/book/book/l3_book.h
+iostream
+-
+algorithm
+-
+

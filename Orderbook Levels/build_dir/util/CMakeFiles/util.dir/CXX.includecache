@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../util/incremental_csv_reader.h
+functional
+-
+string
+-
+fstream
+-
+
+/home/shermanding/QF633/L1_workspace/assignment_4/project/src/util/incremental_csv_reader.cpp
+util/incremental_csv_reader.h
+/home/shermanding/QF633/L1_workspace/assignment_4/project/src/util/util/incremental_csv_reader.h
+
