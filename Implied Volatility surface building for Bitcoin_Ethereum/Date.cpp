@@ -18,7 +18,45 @@ bool operator<(const datetime_t& d1, const datetime_t& d2)
 
 std::ostream& operator<<(std::ostream& os, const datetime_t& d)
 {
-  os << d.year << " " << d.month << " " << d.day << std::endl;
+  std::string month;
+  std::string day;
+  std::string hour;
+  std::string min;
+  std::string sec;
+  std::string ms;
+  if (d.month<10){
+    month = "0"+std::to_string(d.month);
+  } else {
+    month = std::to_string(d.month);
+  }
+  if (d.day<10){
+    day = "0"+std::to_string(d.day);
+  } else {
+    day = std::to_string(d.day);
+  }
+  if (d.hour<10){
+    hour = "0"+std::to_string(d.hour);
+  } else {
+    hour = std::to_string(d.hour);
+  }
+  if (d.min<10){
+    min = "0"+std::to_string(d.min);
+  } else {
+    min = std::to_string(d.min);
+  }
+  if (d.sec<10){
+    sec = "0"+std::to_string(d.sec);
+  } else {
+    sec = std::to_string(d.sec);
+  }
+  if (d.ms<10){
+    ms = "00"+std::to_string(d.ms);
+  } else if (d.ms<100) {
+    ms = "0"+std::to_string(d.ms);
+  } else {
+    ms = std::to_string(d.ms);
+  }
+  os << d.year << "-" << month << "-" << day << "-"<<"T"<<hour<<":"<<min<<":"<<sec<<"."<<ms<<"Z";
   return os;
 }
 

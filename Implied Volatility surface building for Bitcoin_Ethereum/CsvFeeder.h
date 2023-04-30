@@ -28,6 +28,7 @@ private:
     void AdvanceTimer();
     Msg msg_;
     // your member variables and member functions below, if any
+    Msg tempMsg_;
 };
 
 #endif //QF633_CODE_CSVFEEDER_H

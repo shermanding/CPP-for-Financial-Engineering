@@ -45,12 +45,19 @@ double bsUndisc(OptionType optType, double k, double fwd, double T, double sigma
         default:
             throw "unsupported optionType";
     }
+    // std::cout << "model price: " << V_0 << std::endl;
     return V_0;
 }
 
 // qd = N(log(F/K) / stdev), so K = F / exp((N^{-1}(qd) * stdev))
 double quickDeltaToStrike(double qd, double fwd, double stdev) {
-    double inv = invcnorm(qd);
+    double inv;
+    if (qd <0.5){
+        qd = std::abs(qd-0.5)+0.5;
+        inv = -invcnorm(qd);
+    }else{
+        inv = invcnorm(qd);
+    }
     return fwd / std::exp(inv * stdev);
 }
 
@@ -61,6 +68,7 @@ double quickDeltaToStrike(double qd, double fwd, double atmvol, double T) {
 
 double impliedVol(OptionType optionType, double k, double fwd, double T, double undiscPrice) {
     auto f = [undiscPrice, optionType, k, fwd, T](double vol){return bsUndisc(optionType, k, fwd, T, vol) - undiscPrice;};
+    // std::cout << "market price: " << undiscPrice << std::endl;
     return rfbrent(f, 1e-4, 10, 1e-6);
 }
 
